@@ -1,0 +1,9 @@
+#Function to disown and redirect stdout/errout for easily starting with terminal.
+function launchgui {
+	( $1 &> /dev/null ) & 
+}
+
+alias keepass="launchgui keepass2"
+alias intellij="launchgui /opt/intellij/bin/idea.sh"
+alias screenfetch="~/Dropbox/Software/linux/screenfetch-dev"
+alias ali="vim ~/.bash_aliases"
