@@ -15,5 +15,6 @@ installdir=$(pwd)
 symlinkNonExsistent ~/.bashrc .bashrc
 symlinkNonExsistent ~/.aliasrc .aliasrc
 symlinkNonExsistent ~/.vimrc .vimrc
+symlinkNonExsistent ~/.gitconfig .gitconfig
 # Small reminder.
 echo "Don't forget to restart the shell!!!"
