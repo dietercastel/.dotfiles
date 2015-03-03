@@ -24,6 +24,12 @@ set background=dark
 "display current cursor position in lower right corner.  
 set ruler
 
+"tab/spacing settings
+set smartindent
+set tabstop=4 "nb of visual spaces per TAB
+set softtabstop=4 "nb of spaces in tab when editing
+set shiftwidth=4
+
 "Show command in bottom right portion of the screen  
 set showcmd 
 
