@@ -40,11 +40,11 @@ set autoindent
 "Always show the status line  
 set laststatus=2  
 
-"Set incremental searching"  
+"Set incremental searching  
 set incsearch  
-"  "Highlight searching  
+"Highlight searching  
 set hlsearch  
-" case insensitive search  
+"Case insensitive search  
 set ignorecase  
 set smartcase  
 
@@ -53,6 +53,12 @@ set foldenable
 
 "hide mouse when typing  
 set mousehide 
+
+" try mapping CAPS to CRTL
+"noremap <CAPS>
+" try mapping esc to kj
+" jk is quite common in ducth so kj is better?
+noremap! kj <Esc>
 
 " Mark 80th column 
 "set colorcolumn=80
