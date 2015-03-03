@@ -2,6 +2,22 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 filetype plugin indent on     " required!
 
+"------------------VUNDLE SETUP-------------------
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
+Plugin 'Townk/vim-autoclose'
+Plugin 'vim-scripts/dante.vim' "Dark color theme
+call vundle#end() " required 
+"-------------------------------------------------
+
+"Color scheme (downloaded by Vundle)
+colorscheme dante 
+
 "Enable Filetypes
 filetype plugin on
 filetype indent on
