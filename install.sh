@@ -9,12 +9,21 @@ function symlinkNonExsistent {
 		ln -s "$installdir/$2" $1 
 	fi
 }
+
 # Remember the installation directory for further use.
 installdir=$(pwd)
+
 # Symlink the config files.
 symlinkNonExsistent ~/.bashrc .bashrc
 symlinkNonExsistent ~/.aliasrc .aliasrc
 symlinkNonExsistent ~/.vimrc .vimrc
 symlinkNonExsistent ~/.gitconfig .gitconfig
+
+#Setup Vundle
+echo "Downloading Vundle" 
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Running Vundle"
+vim +PluginInstall +qall
+
 # Small reminder.
 echo "Don't forget to restart the shell!!!"
