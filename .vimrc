@@ -12,6 +12,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/dante.vim' "Dark color theme
+Plugin 'mattn/webapi-vim' "Required for Gist plugin
+Plugin 'vim-scripts/gist.vim' "Gist plugin
 call vundle#end() " required 
 "-------------------------------------------------
 
@@ -79,6 +81,14 @@ noremap! kj <Esc>
 " Mark 80th column 
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=lightgrey guibg=darkgrey
+
+"PLUGIN SPECIFIC CONFIGS
+"---------GIST--------
+let g:gist_post_private = 1 "Private by default
+let g:gist_detect_filetype = 1
+" Only :w! updates a gist.
+let g:gist_update_on_write = 2
+"-------END GIST------
 
 "Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.  
 if has("autocmd")  

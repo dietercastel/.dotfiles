@@ -10,3 +10,5 @@
 	interactive = auto
 	pager = true
 	ui = true
+[github]
+	user = dietercastel
