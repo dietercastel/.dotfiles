@@ -1,29 +1,34 @@
-# Creates symlink of the first argument to the second argument if the earllier does not exsist.
-function symlinkNonExsistent { 
-	# Check if there is already such a file but it's not a symlink. Create backup.
-	if [ -f $1 ] && [ ! -L $1 ]; then
-		mv $1 "$1.bckp"	
-	fi
-	# If there is no such file, create symlyink.
-	if [ ! -f $1 ]; then
-		ln -s "$installdir/$2" $1 
-	fi
-}
-
 # Remember the installation directory for further use.
 installdir=$(pwd)
 
-# Symlink the config files.
-symlinkNonExsistent ~/.bashrc .bashrc
-symlinkNonExsistent ~/.aliasrc .aliasrc
-symlinkNonExsistent ~/.vimrc .vimrc
-symlinkNonExsistent ~/.gitconfig .gitconfig
+# Creates symlink of the first argument to the second argument if the earllier does not exsist.
+function symlinkNonExistent { 
+	target=$1
+	from=$2
+	# Check if there is already such a file but it's not a symlink. Create backup.
+	if [ -f $target ] && [ ! -L $target ]; then
+		mv $target "$target.bckp"	
+	fi
+	# If there is no such file, create symlyink.
+	if [ ! -f $target ]; then
+		ln -s "$installdir/$from" $target 
+	fi
+}
 
-#Setup Vundle
-echo "Downloading Vundle" 
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-echo "Running Vundle"
-vim +PluginInstall +qall
+function main {
+	# Symlink the config files.
+	symlinkNonExistent ~/.bashrc .bashrc
+	symlinkNonExistent ~/.aliasrc .aliasrc
+	symlinkNonExistent ~/.vimrc .vimrc
+	symlinkNonExistent ~/.gitconfig .gitconfig
 
-# Small reminder.
-echo "Don't forget to restart the shell!!!"
+	#Setup Vundle
+	echo "Downloading Vundle" 
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	echo "Running Vundle"
+	vim +PluginInstall +qall
+
+	# Small reminder.
+	echo "Don't forget to restart the shell!!!"
+}
+main
