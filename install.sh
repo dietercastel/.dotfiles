@@ -1,3 +1,13 @@
+#!/bin/bash
+# Install script for my dotfiles
+# Should run by default on linux when the following is installed:
+# On osx run 
+#	./install.sh -osx
+# - curl
+# - git
+# - fish
+# - neovim
+
 # Remember the installation directory for further use.
 installdir=$(pwd)
 
@@ -9,25 +19,31 @@ function symlinkNonExistent {
 	if [ -f $target ] && [ ! -L $target ]; then
 		mv $target "$target.bckp"	
 	fi
+	if [ ! -d $(dirname $target) ]; then
+		mkdir -p $(dirname $target)
+	fi
 	# If there is no such file, create symlyink.
 	if [ ! -f $target ]; then
 		ln -s "$installdir/$from" $target 
 	fi
 }
 
+if [ "$1" -eq "-osx" ]; then
+   	if ! grep -q "fish" /etc/shells; then
+		echo $(which fish) >> /etc/shells
+		chsh -s $(which fish)
+	fi
+fi
+
 function main {
 	# Symlink the config files.
+	symlinkNonExistent ~/.config/fish/config.fish .bashrc
 	symlinkNonExistent ~/.bashrc .bashrc
 	symlinkNonExistent ~/.aliasrc .aliasrc
 	symlinkNonExistent ~/.vimrc .vimrc
 	symlinkNonExistent ~/.gitconfig .gitconfig
 
-	#Setup Vundle
-	echo "Downloading Vundle" 
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	echo "Running Vundle"
-	vim +PluginInstall +qall
-
+	
 	# Small reminder.
 	echo "Don't forget to restart the shell!!!"
 }

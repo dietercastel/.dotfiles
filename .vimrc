@@ -1,36 +1,33 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
-filetype plugin indent on     " required!
+
+#Setup plugged 
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 "------------------VUNDLE SETUP-------------------
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
-Plugin 'Townk/vim-autoclose'
-Plugin 'vim-scripts/dante.vim' "Dark color theme
-Plugin 'mattn/webapi-vim' "Required for Gist plugin
-Plugin 'vim-scripts/gist.vim' "Gist plugin
-call vundle#end() " required 
+call plug#begin('~/.config/nvim/autoload/plug.vim')
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'Townk/vim-autoclose'
+Plug 'vim-scripts/dante.vim' "Dark color theme
+Plug 'mattn/webapi-vim' "Required for Gist plugin
+Plug 'vim-scripts/gist.vim' "Gist plugin
+call plug#end() " required 
 "-------------------------------------------------
 
 "Color scheme (downloaded by Vundle)
 colorscheme dante 
 
-"Enable Filetypes
-filetype plugin on
-filetype indent on
-syntax on
-
 "Disable the swap file
 set noswapfile
-" Remove the current directory from the backupdir (no annoying ~files)
-set backupdir-=.
-" Add my own directory to the backupdir (So still backup possible)
-set backupdir^=C:/Dropbox/Vim/backup,~/tmp,/tmp
+#" Remove the current directory from the backupdir (no annoying ~files)
+#set backupdir-=.
+#" Add my own directory to the backupdir (So still backup possible)
+#set backupdir^=C:/Dropbox/Vim/backup,~/tmp,/tmp
 
 
 "Enable relative Line Numbers
@@ -72,11 +69,7 @@ set foldenable
 "hide mouse when typing  
 set mousehide 
 
-" try mapping CAPS to CRTL
-"noremap <CAPS>
-" try mapping esc to kj
-" jk is quite common in ducth so kj is better?
-noremap! kj <Esc>
+noremap! jj <Esc>
 
 " Mark 80th column 
 "set colorcolumn=80
@@ -89,8 +82,3 @@ let g:gist_detect_filetype = 1
 " Only :w! updates a gist.
 let g:gist_update_on_write = 2
 "-------END GIST------
-
-"Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.  
-if has("autocmd")  
-	autocmd bufwritepost _vimrc source C:/Dropbox/Vim/_vimrc  
-endif 

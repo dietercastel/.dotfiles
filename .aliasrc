@@ -6,6 +6,7 @@ function launchgui {
 alias keepass="launchgui keepass2"
 alias intellij="launchgui /opt/intellij/bin/idea.sh"
 alias screenfetch="~/Dropbox/Software/linux/screenfetch-dev"
+alias vim="nvim"
 alias alrc="vim ~/.aliasrc"
 alias barc="vim ~/.bashrc"
 alias virc="vim ~/.vimrc"
