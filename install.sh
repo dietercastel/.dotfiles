@@ -49,9 +49,9 @@ function main {
 }
 main
 
+
+
+#TODO: install fish/omf/other tools?
+#TODO install fish clearance theme maybe like so: 
 #omf theme clearance
 #omf install clearance
-
-
-#TODO: install fish/other tools?
-#TODO install fish clearance theme maybe like so: 
