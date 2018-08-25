@@ -1,13 +1,13 @@
 set nocompatible               " be iMproved
 
-#Setup plugged 
+#Plugged plugin manager auto download
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 	\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"------------------VUNDLE SETUP-------------------
+"------------------plugged SETUP-------------------
 call plug#begin('~/.config/nvim/autoload/plug.vim')
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
@@ -16,11 +16,12 @@ Plug 'Townk/vim-autoclose'
 Plug 'vim-scripts/dante.vim' "Dark color theme
 Plug 'mattn/webapi-vim' "Required for Gist plugin
 Plug 'vim-scripts/gist.vim' "Gist plugin
-call plug#end() " required 
+Plug 'cseelus/vim-colors-clearance'
+call plug#end() " required
 "-------------------------------------------------
 
-"Color scheme (downloaded by Vundle)
-colorscheme dante 
+"Color scheme (downloaded by plugged)
+colorscheme clearance
 
 "Disable the swap file
 set noswapfile

@@ -28,16 +28,16 @@ function symlinkNonExistent {
 	fi
 }
 
-if [ "$1" -eq "-osx" ]; then
-   	if ! grep -q "fish" /etc/shells; then
-		echo $(which fish) >> /etc/shells
-		chsh -s $(which fish)
-	fi
-fi
+#if [ "$1" -eq "-osx" ]; then
+#   	if ! grep -q "fish" /etc/shells; then
+#		echo $(which fish) >> /etc/shells
+#		chsh -s $(which fish)
+#	fi
+#fi
 
 function main {
 	# Symlink the config files.
-	symlinkNonExistent ~/.config/fish/config.fish .bashrc
+	symlinkNonExistent ~/.config/fish/config.fish config.fish 
 	symlinkNonExistent ~/.bashrc .bashrc
 	symlinkNonExistent ~/.aliasrc .aliasrc
 	symlinkNonExistent ~/.vimrc .vimrc
@@ -48,3 +48,10 @@ function main {
 	echo "Don't forget to restart the shell!!!"
 }
 main
+
+#omf theme clearance
+#omf install clearance
+
+
+#TODO: install fish/other tools?
+#TODO install fish clearance theme maybe like so: 
