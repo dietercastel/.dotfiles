@@ -2,7 +2,7 @@
 
 import unittest
 import os
-from scripts import classlang
+from utils import classlang
 
 testdir = "./tests/langfiles"
 
@@ -17,6 +17,6 @@ class Test(unittest.TestCase):
             
         #Test each language in testfiles/
 
-suite = unittest.TestLoader().loadTestsFromTestCase(Test)
-unittest.TextTestRunner(verbosity=2).run(suite)  
-
+if __name__ == "__main__":
+    suite = unittest.TestLoader().loadTestsFromTestCase(Test)
+    unittest.TextTestRunner(verbosity=2).run(suite)  

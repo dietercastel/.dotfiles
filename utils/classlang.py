@@ -23,12 +23,11 @@ langs = list(commonWordsDict.keys())
 indexDict = dict(zip(range(0,len(langs)), langs))
 # print(indexDict) 
 
-startoffile = open(sys.argv[1], encoding='utf-8').readlines()[0:99]
-
+#Fix countOcc with lang + lines param? Or alternative.
 def countOccurences(lang):
     # print(lang)
     tot = 0
-    for l in startoffile:
+    for l in lines:
         for w in commonWordsDict[lang]:
            # print(l)
            # print(w)
@@ -36,7 +35,8 @@ def countOccurences(lang):
     return tot
 
 def classifyLanguage(filename, maxlines):
-   startoffile = open(filename, encoding='utf-8').readlines()[0:maxlines]
+    #TODO: fix maxlines with overflow check
+   lines = open(filename, encoding='utf-8').readlines()[0:maxlines]
 # print(startoffile)
    scores = map(countOccurences, langs)
    scl = list(scores)
@@ -47,6 +47,8 @@ def classifyLanguage(filename, maxlines):
    return indexDict[maxIdx]
 
 if __name__ == '__main__':
+    #Figure out why it still gets executed on import.
     print('Executing');
-    filename =  sys.argv[1]
-    print(classifyLanguage(filename,maxlines))
+    if len(sys.argv > 1):
+        filename =  sys.argv[1]
+        print(classifyLanguage(filename,maxlines))
