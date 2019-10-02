@@ -81,6 +81,8 @@ set foldenable
 set mousehide 
 
 noremap! jj <Esc>
+" TODO figure this out how to map it?
+"map gk gcc
 
 " Mark 80th column 
 "set colorcolumn=80

@@ -12,37 +12,37 @@
 
 import sys
 
-# Only look at first 100 lines
-startoffile = open(sys.argv[1], encoding='utf-8').readlines()[0:99]
-
-print(startoffile)
 
 commonWordsDict = {
 "en_us" : [" the "," and "," a ", " to ", "The ", " an "],
-"nl" : [" de "," en "," in ", " van ", " op ", "De ", "Het "]
+"nl" : [" de "," en "," in ", " van ", " op ", "De ", "Het "],
+"fr" : [" un "," une "," des ", " ce ", " je ", "Ce ", "Un ", "Une ", " il ", " elle "]
 }
-
 langs = list(commonWordsDict.keys())
 indexDict = dict(zip(range(0,len(langs)), langs))
-print(indexDict)
+# print(indexDict) 
+
+# Only look at first 100 lines
+startoffile = open(sys.argv[1], encoding='utf-8').readlines()[0:99]
+# print(startoffile)
 
 def countOccurences(lang):
-    print(lang)
+    # print(lang)
     tot = 0
     for l in startoffile:
         for w in commonWordsDict[lang]:
-           print(l)
-           print(w)
+           # print(l)
+           # print(w)
            tot += l.count(w)
     return tot
 
 def classifyLanguage():
    scores = map(countOccurences, langs)
    scl = list(scores)
-   print(scl)
+   # print(scl)
    maxVal = max(scl)
-   print(maxVal)
+   # print(maxVal)
    maxIdx = scl.index(maxVal)
-   print(indexDict[maxIdx])
+   # print(indexDict[maxIdx])
 
 classifyLanguage()
