@@ -8,9 +8,9 @@ testdir = "./tests/langfiles"
 
 class Test(unittest.TestCase):
     def testClassLang(self):
-        for l in langs:
-            print(fn)
-            testfn = fn+".md"
+        for l in classlang.getLangs():
+            print(l)
+            testfn = l+".md"
             testpath = os.path.join(testdir,testfn)
             testlang = classlang.classifyLanguage(testpath,l)
             self.assertEqual(testlang,l)

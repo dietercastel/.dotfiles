@@ -11,6 +11,7 @@
 # To be used in conjunction with vim spelllang setting to automatically select the language.
 
 import sys
+import functools
 
 # Only look at first 100 lines
 maxlines = 100
@@ -23,8 +24,11 @@ langs = list(commonWordsDict.keys())
 indexDict = dict(zip(range(0,len(langs)), langs))
 # print(indexDict) 
 
+def getLangs():
+    return langs
+
 #Fix countOcc with lang + lines param? Or alternative.
-def countOccurences(lang):
+def countOccurences(lang,lines):
     # print(lang)
     tot = 0
     for l in lines:
@@ -36,9 +40,11 @@ def countOccurences(lang):
 
 def classifyLanguage(filename, maxlines):
     #TODO: fix maxlines with overflow check
-   lines = open(filename, encoding='utf-8').readlines()[0:maxlines]
+   lines = open(filename, encoding='utf-8').readlines(2048)
+   print(langs)
 # print(startoffile)
-   scores = map(countOccurences, langs)
+   countOLines = functools.partial(countOccurences, lines=lines)
+   scores = map(countOLines, langs)
    scl = list(scores)
    # print(scl)
    maxVal = max(scl)
