@@ -12,7 +12,9 @@
 
 import sys
 
-
+# Only look at first 100 lines
+maxlines = 100
+filename =  sys.argv[1]
 commonWordsDict = {
 "en_us" : [" the "," and "," a ", " to ", "The ", " an "],
 "nl" : [" de "," en "," in ", " van ", " op ", "De ", "Het "],
@@ -22,9 +24,7 @@ langs = list(commonWordsDict.keys())
 indexDict = dict(zip(range(0,len(langs)), langs))
 # print(indexDict) 
 
-# Only look at first 100 lines
 startoffile = open(sys.argv[1], encoding='utf-8').readlines()[0:99]
-# print(startoffile)
 
 def countOccurences(lang):
     # print(lang)
@@ -36,7 +36,9 @@ def countOccurences(lang):
            tot += l.count(w)
     return tot
 
-def classifyLanguage():
+def classifyLanguage(filename,maxlines):
+   startoffile = open(filename, encoding='utf-8').readlines()[0:maxlines]
+# print(startoffile)
    scores = map(countOccurences, langs)
    scl = list(scores)
    # print(scl)
@@ -45,4 +47,4 @@ def classifyLanguage():
    maxIdx = scl.index(maxVal)
    # print(indexDict[maxIdx])
 
-classifyLanguage()
+classifyLanguage(filename,maxlines)
