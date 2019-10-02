@@ -20,8 +20,17 @@ Plug 'cseelus/vim-colors-clearance'
 call plug#end() " required
 "-------------------------------------------------
 
+
+" LANGUAGE SPELL AND SYNTAXCHECK SETTINGS
+"
+set spell
+"au BufReadPost *.md set spelllang=(EVAL PYTHONSCRIPT HERE)
+" the "," and "," a ", " to "
+set spellfile=/keybase/private/dietercastel/langtools/mylist.utf-8.add
+""""""""""""""""""""""
+
 "Color scheme (downloaded by plugged)
-colorscheme clearance
+colorscheme dante
 
 "Disable the swap file
 set noswapfile
@@ -41,6 +50,7 @@ set background=dark
 set ruler
 
 "tab/spacing settings
+" Rework to 2 spaces?
 set smartindent
 set tabstop=4 "nb of visual spaces per TAB
 set softtabstop=4 "nb of spaces in tab when editing
