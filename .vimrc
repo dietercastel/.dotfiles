@@ -17,6 +17,7 @@ Plug 'vim-scripts/dante.vim' "Dark color theme
 Plug 'mattn/webapi-vim' "Required for Gist plugin
 Plug 'vim-scripts/gist.vim' "Gist plugin
 Plug 'cseelus/vim-colors-clearance'
+Plug 'rhysd/vim-grammarous'
 call plug#end() " required
 "-------------------------------------------------
 
@@ -95,3 +96,11 @@ let g:gist_detect_filetype = 1
 " Only :w! updates a gist.
 let g:gist_update_on_write = 2
 "-------END GIST------
+ 
+"---------GRAMMAROUS--------
+:nmap gf <Plug>(grammarous-fixit)
+:nmap gn <Plug>(grammarous-move-to-next-error)
+" check feature of gn
+:nmap gp <Plug>(grammarous-move-to-previous-error)
+" check feature of gp
+"-------END GRAMMAROUS------
