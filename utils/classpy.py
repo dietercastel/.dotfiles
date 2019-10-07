@@ -41,7 +41,7 @@ def countOccurences(lang,lines):
 
 def classifyVersion(filename, maxbytes = maxbytes):
    lines = open(filename, encoding='utf-8').readlines(maxbytes)
-   print(versions)
+#   print(versions)
 # print(startoffile)
    countOLines = functools.partial(countOccurences, lines=lines)
    scores = map(countOLines, versions)
@@ -54,7 +54,7 @@ def classifyVersion(filename, maxbytes = maxbytes):
 
 if __name__ == '__main__':
     #Figure out why it still gets executed on import.
-    print('Executing');
     if len(sys.argv) > 1:
         filename =  sys.argv[1]
+        print(filename)
         print(classifyVersion(filename,maxbytes))
