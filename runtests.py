@@ -3,19 +3,37 @@
 import unittest
 import os
 from utils import classlang
+from utils import classpy 
 
-testdir = "./tests/langfiles"
+
+testdir = "./tests"
+langdir = os.path.join(testdir,"langfiles")
+langext = ".md"
+pydir = os.path.join(testdir,"pyfiles")
+pyext = ".py"
+
+maxpyfiles = range(1,2)
 
 class Test(unittest.TestCase):
+    #Test each language
     def testClassLang(self):
         for l in classlang.getLangs():
             print(l)
-            testfn = l+".md"
-            testpath = os.path.join(testdir,testfn)
+            testfn = l+langext
+            testpath = os.path.join(langdir,testfn)
             testlang = classlang.classifyLanguage(testpath,l)
             self.assertEqual(testlang,l)
+
+    #Test each python version
+    def testClassPy(self):
+        for l in classpy.getVersions():
+            for i in maxpyfiles:
+                print(l)
+                testfn = str(i)+"-"+l+pyext
+                testpath = os.path.join(pydir,testfn)
+                testlang = classpy.classifyVersion(testpath,l)
+                self.assertEqual(testlang,l)
             
-        #Test each language in testfiles/
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(Test)

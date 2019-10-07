@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 #
-# This script classifies the language of a file based on an advance NLP AI model. 
+# This script classifies the python version of a file based on an advance NLP AI model. 
 # (Well or just some clever programming actually.)
 #
 # Usage:
-# python3 classlang.py filetocheck
+# python3 classpy.py filetocheck
 # Returns:
 # A string corresponding to the most likely language in the file. 
 #
-# To be used in conjunction with vim spelllang setting to automatically select the language.
+# Python 2 v 3 difference from
+# https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#the-print-function
+
 
 import sys
 import functools
@@ -16,16 +18,15 @@ import functools
 # Only look at first 100 lines
 maxbytes = 2048 
 commonWordsDict = {
-"en_us" : [" the "," and "," a ", " to ", "The ", " an "],
-"nl" : [" de "," en "," in ", " van ", " op ", "De ", "Het "],
-"fr" : [" un "," une "," des ", " ce ", " je ", "Ce ", "Un ", "Une ", " il ", " elle "]
+"pyv3" : ["print(", " range(", "Error(", "Error as ", "__contains__","next("],
+"pyv2" : ["print ", "xrange(", "Error,", "next()"]
 }
-langs = list(commonWordsDict.keys())
-indexDict = dict(zip(range(0,len(langs)), langs))
+versions = list(commonWordsDict.keys())
+indexDict = dict(zip(range(0,len(versions)), versions))
 # print(indexDict) 
 
-def getLangs():
-    return langs
+def getVersions():
+    return versions
 
 #Fix countOcc with lang + lines param? Or alternative.
 def countOccurences(lang,lines):
@@ -38,12 +39,13 @@ def countOccurences(lang,lines):
            tot += l.count(w)
     return tot
 
-def classifyLanguage(filename, maxlines):
+def classifyVersion(filename, maxlines):
+    #TODO: fix maxlines with overflow check
    lines = open(filename, encoding='utf-8').readlines(maxbytes)
-   print(langs)
+   print(versions)
 # print(startoffile)
    countOLines = functools.partial(countOccurences, lines=lines)
-   scores = map(countOLines, langs)
+   scores = map(countOLines, versions)
    scl = list(scores)
    # print(scl)
    maxVal = max(scl)
@@ -56,4 +58,4 @@ if __name__ == '__main__':
     print('Executing');
     if len(sys.argv) > 1:
         filename =  sys.argv[1]
-        print(classifyLanguage(filename,maxlines))
+        print(classifyVersion(filename,maxlines))
