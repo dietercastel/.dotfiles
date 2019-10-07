@@ -38,7 +38,7 @@ def countOccurences(lang,lines):
            tot += l.count(w)
     return tot
 
-def classifyLanguage(filename, maxlines):
+def classifyLanguage(filename, maxbytes = maxbytes):
    lines = open(filename, encoding='utf-8').readlines(maxbytes)
    print(langs)
 # print(startoffile)
@@ -56,4 +56,4 @@ if __name__ == '__main__':
     print('Executing');
     if len(sys.argv) > 1:
         filename =  sys.argv[1]
-        print(classifyLanguage(filename,maxlines))
+        print(classifyLanguage(filename,maxbytes))

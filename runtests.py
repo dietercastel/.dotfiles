@@ -19,9 +19,9 @@ class Test(unittest.TestCase):
     def testClassLang(self):
         for l in classlang.getLangs():
             print(l)
-            testfn = l+langext
+            testfn = l + langext
             testpath = os.path.join(langdir,testfn)
-            testlang = classlang.classifyLanguage(testpath,l)
+            testlang = classlang.classifyLanguage(testpath, maxbytes=4096)
             self.assertEqual(testlang,l)
 
     #Test each python version
@@ -29,9 +29,9 @@ class Test(unittest.TestCase):
         for l in classpy.getVersions():
             for i in maxpyfiles:
                 print(l)
-                testfn = str(i)+"-"+l+pyext
+                testfn = str(i) + "-" + l + pyext
                 testpath = os.path.join(pydir,testfn)
-                testlang = classpy.classifyVersion(testpath,l)
+                testlang = classpy.classifyVersion(testpath)
                 self.assertEqual(testlang,l)
             
 

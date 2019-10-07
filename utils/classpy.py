@@ -39,8 +39,7 @@ def countOccurences(lang,lines):
            tot += l.count(w)
     return tot
 
-def classifyVersion(filename, maxlines):
-    #TODO: fix maxlines with overflow check
+def classifyVersion(filename, maxbytes = maxbytes):
    lines = open(filename, encoding='utf-8').readlines(maxbytes)
    print(versions)
 # print(startoffile)
@@ -58,4 +57,4 @@ if __name__ == '__main__':
     print('Executing');
     if len(sys.argv) > 1:
         filename =  sys.argv[1]
-        print(classifyVersion(filename,maxlines))
+        print(classifyVersion(filename,maxbytes))
