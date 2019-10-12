@@ -15,7 +15,7 @@ Plug 'bling/vim-airline'
 Plug 'Townk/vim-autoclose'
 Plug 'vim-scripts/dante.vim' "Dark color theme
 Plug 'mattn/webapi-vim' "Required for Gist plugin
-Plug 'vim-scripts/gist.vim' "Gist plugin
+Plug 'mattn/gist-vim'
 Plug 'cseelus/vim-colors-clearance'
 Plug 'rhysd/vim-grammarous'
 call plug#end() " required
@@ -80,6 +80,10 @@ set foldenable
 
 "hide mouse when typing  
 set mousehide 
+
+" For using argdo see http://vimcasts.org/transcripts/43/en/
+" What is the effect of this in vimrc?
+"set hidden
 
 noremap! jj <Esc>
 " TODO figure this out how to map it?
