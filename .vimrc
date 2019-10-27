@@ -18,6 +18,7 @@ Plug 'mattn/webapi-vim' "Required for Gist plugin
 Plug 'mattn/gist-vim'
 Plug 'cseelus/vim-colors-clearance'
 Plug 'rhysd/vim-grammarous'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end() " required
 "-------------------------------------------------
 
@@ -51,11 +52,10 @@ set background=dark
 set ruler
 
 "tab/spacing settings
-" Rework to 2 spaces?
 set smartindent
-set tabstop=4 "nb of visual spaces per TAB
-set softtabstop=4 "nb of spaces in tab when editing
-set shiftwidth=4
+set tabstop=2 "nb of visual spaces per TAB
+set softtabstop=2 "nb of spaces in tab when editing
+set shiftwidth=2
 
 "Show command in bottom right portion of the screen  
 set showcmd 
