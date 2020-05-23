@@ -42,6 +42,7 @@ function main {
 	symlinkNonExistent ~/.aliasrc .aliasrc
 	symlinkNonExistent ~/.vimrc .vimrc
 	symlinkNonExistent ~/.gitconfig .gitconfig
+	symlinkNonExistent ~/.juliarc.jl .juliarc.jl 
 
 	
 	# Small reminder.
